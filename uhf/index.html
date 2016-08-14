@@ -11,6 +11,13 @@
       margin: 0;
       padding: 0;
     }
+    .notloaded #container, .ready #container {
+      -webkit-filter: blur(5px);
+      -moz-filter: blur(5px);
+      -o-filter: blur(5px);
+      -ms-filter: blur(5px);
+      filter: blur(5px);
+    }
     #container {
       position: absolute;
       top: 0;
@@ -27,14 +34,20 @@
       width: 100%;
       height: 100%;
     }
-    #playblocker {
-      background-image: url("static.gif");
+    #playblocker, #static {
       position: absolute;
       top: 0;
       bottom: 0;
       left: 0;
       right: 0;
       z-index: 2;
+    }
+    #static {
+      background: rgba(255,255,255,0.3);
+      z-index: 1;
+    }
+    .notloaded #static {
+      background: url("static.gif");
     }
     #playbuttonContainer {
       margin: auto;
@@ -43,15 +56,26 @@
       margin-top: -50px;
       left: 50%;
       margin-left: -50px;
-    }
-    #playbutton {
+      text-align: center;
+      z-index: 5;
       display: none;
+    }
+    #playbuttonText {
+      text-transform: uppercase;
+      margin: 0;
+      font-family: sans-serif;
+      font-variant: small-caps;
+      font-size: 13px;
     }
   </style>
 </head>
-<body>
+<body class="notloaded">
   <div id="playblocker">
-    <div id="playbuttonContainer"><img src="8ball.png" id="playbutton" width="100"></div>
+    <div id="static"></div>
+    <div id="playbuttonContainer">
+      <img src="8ball.png" id="playbutton" width="100">
+      <p id="playbuttonText">Start</p>
+    </div>
   </div>
   <div id="container">
     <iframe id="player"
