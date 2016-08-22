@@ -12,6 +12,9 @@
       padding: 0;
       background-color: black;
     }
+    /*
+      This holds the YT player, which is beneath everything else until ready.
+    */
     #videoContainer {
       position: absolute;
       top: 0;
@@ -19,9 +22,13 @@
       left: 0;
       right: 0;
       /*pointer-events: none;*/
-      background: blue;
       z-index: -1;
     }
+    /*
+      When our player is ready, it is brought to the top of the
+      layout stack, but made invisible. Now clicks on screen will go
+      to the YT player directly, and we can skirt some iOS limitations
+    */
     .ready #videoContainer {
       z-index: 9;
       opacity: 0;
@@ -31,8 +38,7 @@
       /*pointer-events: none;*/
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      /* 100% sizing is set inside js */
     }
     #playblocker, #thumb {
       position: absolute;
@@ -46,20 +52,21 @@
       background: url("static.gif");
     }
     #thumb {
-      background-image: url(http://img.youtube.com/vi/mJ8tq8AnNis/hqdefault.jpg);
+      /*background-image: url(http://img.youtube.com/vi/mJ8tq8AnNis/hqdefault.jpg);*/
+      background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
-      opacity: 0.7;
+      opacity: 0.3;
       z-index: 1;
-      -webkit-filter: blur(10px);
+      /*-webkit-filter: blur(10px);
       -moz-filter: blur(10px);
       -o-filter: blur(10px);
       -ms-filter: blur(10px);
-      filter: blur(10px);
+      filter: blur(10px);*/
     }
-    .playing #thumb {
+    /*.playing #thumb {
       display: none;
-    }
+    }*/
     #playbuttonContainer {
       margin: auto;
       position: absolute;
